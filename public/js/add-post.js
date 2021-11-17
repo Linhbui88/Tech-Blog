@@ -21,5 +21,6 @@ async function newFormHandler(event) {
     alert(response.statusText);
   }
 };
-
-document.getElementById('new-post-form').addEventListener('submit', newFormHandler);
+const newPost=document.getElementById('new-post-form')
+// document.getElementById('new-post-form').addEventListener('submit', newFormHandler);
+newPost.addEventListener('submit', newFormHandler)

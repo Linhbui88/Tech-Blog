@@ -1,15 +1,18 @@
 <div class="comments">
   {{#each this}}
-    <div class="card">
+    <div class="card bg-dark">
         <h3 class="card-header"></h3>
         <section class="comment card-body">
-            <div class="text">
+            <div class="text text-warning">
                 {{comment_text}}
             </div>
-            <div class="meta">
+            <div class="meta text-warning">
                 -{{user.username}}, {{format_date created_at}}
             </div>
         </section>
     </div>
   {{/each}}
 </div>
+{{#if session.loggedIn}}
+<script src="/js/comment.js"></script>
+{{/if}}

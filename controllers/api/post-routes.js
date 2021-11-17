@@ -4,7 +4,7 @@ const sequelize = require('../../config/connection');
 const {withAuth} = require('../../utils/auth');
 console.log(withAuth)
 
-router.get('/', withAuth, (req, res) => {
+router.get('/', (req, res) => {
     console.log('======================');
     Post.findAll({
             attributes: ['id',
@@ -36,7 +36,7 @@ router.get('/', withAuth, (req, res) => {
         });
 
 });
-router.get('/:id',withAuth, (req, res) => {
+router.get('/:id',(req, res) => {
     Post.findOne({
             where: {
                 id: req.params.id
@@ -73,7 +73,7 @@ router.get('/:id',withAuth, (req, res) => {
         });
 });
 
-router.post('/', withAuth, (req, res) => {
+router.post('/',(req, res) => {
     Post.create({
             title: req.body.title,
             content: req.body.content,
@@ -86,7 +86,7 @@ router.post('/', withAuth, (req, res) => {
         });
 });
 
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', withAuth,(req, res) => {
     Post.update({
             title: req.body.title,
             content: req.body.content
@@ -106,7 +106,7 @@ router.put('/:id', withAuth, (req, res) => {
             res.status(500).json(err);
         });
 });
-router.delete('/:id', withAuth, (req, res) => {
+router.delete('/:id',withAuth,(req, res) => {
     Post.destroy({
         where: {
             id: req.params.id

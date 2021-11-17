@@ -1,30 +1,30 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
-const {withAuth} = require('../utils/auth');
-router.get('/', withAuth, (req, res) => {
+const {withAuth,withoutAuth} = require('../utils/auth');
+router.get('/', withAuth,(req, res) => {
     Post.findAll({
-            where: {
+        where: {
                 user_id: req.session.user_id
             },
-            attributes: [
-                'id',
-                'title',
-                'content',
-                'created_at'
+        attributes: [
+            'id',
+            'title',
+            'content',
+            'created_at'
             ],
-            include: [{
-                    model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
+        include: [{
+            model: Comment,
+            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            include: {
+                model: User,
+                attributes: ['username']
+            }
                 },
-                {
-                    model: User,
-                    attributes: ['username']
-                }
+            {
+                model: User,
+                attributes: ['username']
+            }
             ]
         })
         .then(dbPostData => {
@@ -36,7 +36,7 @@ router.get('/', withAuth, (req, res) => {
             res.status(500).json(err);
         });
 });
-router.get('/edit/:id', withAuth, (req, res) => {
+router.get('/edit/:id',withAuth,(req, res) => {
     Post.findOne({
             where: {
                 id: req.params.id
@@ -67,14 +67,15 @@ router.get('/edit/:id', withAuth, (req, res) => {
             }
 
             const post = dbPostData.get({ plain: true });
-            res.render('edit-post', { post, loggedIn: true });
+            console.log(post)
+            res.render('edit-post', { post});
         })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
 })
-router.get('/new', (req, res) => {
+router.get('/new',withAuth,(req, res) => {
     res.render('new-post');
 });
 
