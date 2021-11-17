@@ -45,7 +45,7 @@ to publish articles, blog posts, their thoughts and opinions
 
 
 ## Deployed application link
-Live Deployed Allication: [View Application](https://intense-citadel-85513.herokuapp.com/)<br/>
+Live Deployed Allication: [View Application](https://linhbui88.github.io/Tech-Blog/)<br/>
 
 
 ## Languages
