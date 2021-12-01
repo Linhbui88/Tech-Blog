@@ -45,7 +45,7 @@ to publish articles, blog posts, their thoughts and opinions
 
 
 ## Deployed application link
-Live Deployed Allication: [View Application](https://linhbui88.github.io/Tech-Blog/)<br/>
+Live Deployed Allication: [View Application](https://nameless-harbor-72570.herokuapp.com/)<br/>
 
 
 ## Languages
