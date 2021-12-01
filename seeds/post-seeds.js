@@ -1,4 +1,4 @@
-const { Post } = require('../models');
+const { Post } = require('../models/Index');
 
 const postData = [{
         title: 'Lorem Ipsum I',
